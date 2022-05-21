@@ -1,0 +1,25 @@
+type Article {
+    id: ID!
+    title: String!
+    author: String!
+    comments: [Comment]
+}
+
+
+type Comment {
+    id: ID!
+    content: String!
+    article: Article!
+}
+
+# Mutation: to add entities
+type Mutation {
+	addArticle(title: String!, author: String!): Article!
+	addComment(comment: String!, articleId:Int!): Comment!
+}
+
+# The Root Query for the application
+type Query {
+    getAllArticles: [Article]
+    getArticleById(id:Int): Article
+}
